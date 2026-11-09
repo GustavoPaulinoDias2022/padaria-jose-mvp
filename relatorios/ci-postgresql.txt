@@ -1,0 +1,16 @@
+Execução GitHub Actions: https://github.com/GustavoPaulinoDias2022/padaria-jose-mvp/actions/runs/42542279731
+Job: 128919642143
+Commit da aplicação: 7cff823036350752e0d5d57b8bc20fdb45897fc3
+Ambiente: Ubuntu, Python 3.13, serviço PostgreSQL 17 descartável.
+Resultado: sucesso. Todos os 51 testes executados; sem ignorados.
+Extrato dos logs, com horários em UTC (a data local é 08/11/2026):
+2026-11-09T00:50:21.3965880Z test_two_sales_cannot_oversell (loja.tests.test_concurrency.PostgreSQLConcurrencyTests.test_two_sales_cannot_oversell) ... ok
+2026-11-09T00:50:21.4472925Z Ran 51 tests in 3.092s
+2026-11-09T00:50:21.4473114Z OK
+2026-11-09T00:50:21.7104615Z TOTAL                                       351      1     66      1  99.52%
+2026-11-09T00:50:25.7683794Z No known vulnerabilities found
+
+Cobertura de linhas e ramificações: 99,52% no CI PostgreSQL.
+O relatório local em coverage.txt/coverage.json refere-se ao Windows/SQLite e registrou 100%.
+A diferença é um ramo de configuração local SQLite não exercitado no ambiente PostgreSQL; não há falha funcional de teste.
+Para um campo inteiro conservador baseado no CI: 99.

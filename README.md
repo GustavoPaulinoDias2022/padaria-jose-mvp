@@ -4,6 +4,8 @@ Planejamento acadêmico e protótipos visuais de uma aplicação para integrar o
 
 **Situação atual: MVP Django implementado e testes locais executados.** Há autenticação, produtos, prévia de venda, confirmação com baixa de estoque e histórico. A aplicação não foi publicada em produção nem validada com a participante. Consulte o [relatório de execução](docs/13-implementacao-e-testes.md) para a cobertura medida e os limites das verificações.
 
+**Testes verificados:** 51 aprovados com PostgreSQL no GitHub Actions; cobertura de linhas e ramificações de **99,52%** nesse ambiente. A execução local SQLite apresentou 100%, com o teste de concorrência ignorado. Os dois resultados estão identificados por ambiente no relatório.
+
 O nome desta pasta é uma identificação técnica para o repositório. O título formal adotado na Experiência Prática 1 ainda precisa ser confirmado antes da entrega acadêmica.
 
 ## Contexto

@@ -24,7 +24,15 @@ Data da execução local: 08/11/2026 (America/Sao_Paulo). Esta atualização suc
 - `manage.py check`, `makemigrations --check --dry-run` e `check --deploy` sem apontamentos na configuração avaliada.
 - Auditoria pip-audit das dependências runtime aplicáveis ao Windows: sem vulnerabilidades conhecidas informadas pela base consultada. Gunicorn não é instalado no Windows e sua auditoria será feita no CI Linux.
 
-O resultado será atualizado se a execução final ou o CI apresentar diferença. O teste de concorrência não é considerado aprovado por estar ignorado no SQLite.
+O teste de concorrência não é considerado aprovado por estar ignorado no SQLite; sua aprovação foi obtida separadamente no CI PostgreSQL descrito abaixo.
+
+## Resultado no GitHub Actions com PostgreSQL
+
+Na [execução 42542279731](https://github.com/GustavoPaulinoDias2022/padaria-jose-mvp/actions/runs/42542279731), o commit 7cff823036350752e0d5d57b8bc20fdb45897fc3 foi testado em Ubuntu/Python 3.13/PostgreSQL 17. **Os 51 testes passaram, sem ignorados**, incluindo a concorrência entre duas vendas. A auditoria runtime Linux também terminou sem vulnerabilidades conhecidas apontadas.
+
+A cobertura de linhas e ramificações no CI foi **99,52%** (351 instruções, uma não executada; 66 ramificações, uma parcial). A diferença em relação aos 100% locais corresponde à configuração padrão de SQLite, que não é a configuração inicial do CI PostgreSQL. Não foi adicionado teste apenas para elevar o indicador. Para o campo acadêmico de número inteiro, **99** representa conservadoramente este resultado do CI.
+
+O [extrato do CI](../relatorios/ci-postgresql.txt) identifica a execução e o commit. Resultados de alterações posteriores devem ser verificados em sua própria execução, sem atribuir automaticamente este resultado a outro commit.
 
 ## Escopo da cobertura
 
@@ -44,7 +52,7 @@ Os testes verificam regras de venda e prévia, autorização direta, autenticaç
 
 Testes efetivos cobrem validação no servidor, autorização de operações, hash PBKDF2, proteção CSRF, escape de texto, bloqueio após falhas, expiração/logout, reenvio e rollback. A auditoria não encontrou vulnerabilidades conhecidas no conjunto Windows consultado. Configuração de cookies seguros e CSP foi inspecionada nas respostas de teste; HTTPS real e proxy da hospedagem ainda não foram verificados.
 
-Antes de produção: validar TLS real e rede/banco, isolamento de infraestrutura, retenção/limpeza de logs de tentativas, restauração de backups, concorrência em PostgreSQL, usuário de banco com menor privilégio e configuração do IP confiável atrás do proxy. A limitação por IP não deve confiar cegamente em cabeçalhos enviados pelo cliente.
+Antes de produção: validar TLS real e rede/banco, isolamento de infraestrutura, retenção/limpeza de logs de tentativas, restauração de backups, usuário de banco com menor privilégio e configuração do IP confiável atrás do proxy. A concorrência foi testada em PostgreSQL descartável no CI, não no ambiente de produção. A limitação por IP não deve confiar cegamente em cabeçalhos enviados pelo cliente.
 
 Não há coleta de dados de clientes, upload, fetch de URLs externas, pagamentos ou API entre origens. Acesso a arquivos locais e publicação de dados pessoais não foram acrescentados. Credenciais de testes são fictícias e não habilitam uma conta de produção.
 
