@@ -39,6 +39,7 @@ Aplicação web responsiva com cadastro de produtos, consulta de estoque, regist
 | [Checklist de acessibilidade](validacao/checklist-acessibilidade.md) | Verificação do RNF04 nas três telas e distinção entre imagem e interação real |
 | [Implementação e testes](docs/13-implementacao-e-testes.md) | Evidências medidas, controles verificados e limitações |
 | [Executar o MVP](docs/14-execucao.md) | Instalação, conta inicial sem senha padrão e comandos de testes |
+| [Demonstração no Render](docs/15-demonstracao-render.md) | Configuração gratuita, segredos, limites e verificações de publicação ainda pendentes |
 
 ## Protótipos
 

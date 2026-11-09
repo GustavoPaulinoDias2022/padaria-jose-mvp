@@ -23,6 +23,16 @@ class ConfigurationTests(SimpleTestCase):
         with self.assertRaises(ImproperlyConfigured):
             self.settings(DATABASE_URL='mysql://localhost/test')
 
+    def test_production_rejects_database_without_tls(self):
+        with self.assertRaises(ImproperlyConfigured):
+            self.settings(APP_ENV='production', DJANGO_SECRET_KEY='test-only-' * 8,
+                          DATABASE_URL='postgresql://ci:ci@localhost/ci?sslmode=disable')
+
+    def test_render_hostname_is_explicitly_allowed(self):
+        result = self.settings(RENDER_EXTERNAL_HOSTNAME='padaria-exemplo.onrender.com')
+        self.assertIn('padaria-exemplo.onrender.com', result['ALLOWED_HOSTS'])
+        self.assertNotIn('*', result['ALLOWED_HOSTS'])
+
     def test_production_secure_flags_and_parsed_database(self):
         result = self.settings(APP_ENV='production', DJANGO_SECRET_KEY='test-only-' * 8,
                                DATABASE_URL='postgresql://ci_user:ci_password@localhost:5432/ci_db',

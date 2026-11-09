@@ -15,6 +15,9 @@ if PRODUCTION and len(SECRET_KEY) < 50:
 SECRET_KEY = SECRET_KEY or secrets.token_urlsafe(64)
 DEBUG = not PRODUCTION and os.environ.get('DJANGO_DEBUG') == '1'
 ALLOWED_HOSTS = os.environ.get('DJANGO_ALLOWED_HOSTS', 'localhost,127.0.0.1,[::1]').split(',')
+render_hostname = os.environ.get('RENDER_EXTERNAL_HOSTNAME', '').strip()
+if render_hostname:
+    ALLOWED_HOSTS.append(render_hostname)
 CSRF_TRUSTED_ORIGINS = list(filter(None, os.environ.get('CSRF_TRUSTED_ORIGINS', '').split(',')))
 
 INSTALLED_APPS = [
@@ -49,12 +52,15 @@ if database_url:
     parsed = urlparse(database_url)
     if parsed.scheme not in ('postgres', 'postgresql'):
         raise ImproperlyConfigured('DATABASE_URL deve apontar para PostgreSQL.')
+    sslmode = parse_qs(parsed.query).get('sslmode', ['require' if PRODUCTION else 'prefer'])[0]
+    if PRODUCTION and sslmode not in ('require', 'verify-ca', 'verify-full'):
+        raise ImproperlyConfigured('PostgreSQL em produção exige TLS.')
     DATABASES = {'default': {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': unquote(parsed.path.lstrip('/')),
         'USER': unquote(parsed.username or ''), 'PASSWORD': unquote(parsed.password or ''),
         'HOST': parsed.hostname, 'PORT': parsed.port or 5432,
-        'OPTIONS': {'sslmode': parse_qs(parsed.query).get('sslmode', ['require' if PRODUCTION else 'prefer'])[0]},
+        'OPTIONS': {'sslmode': sslmode},
     }}
 else:
     if PRODUCTION:
