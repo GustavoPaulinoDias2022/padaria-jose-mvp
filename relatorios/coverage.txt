@@ -1,0 +1,19 @@
+Name                                      Stmts   Miss Branch BrPart    Cover   Missing
+---------------------------------------------------------------------------------------
+config\__init__.py                            0      0      0      0  100.00%
+config\settings.py                           67      0     10      0  100.00%
+config\testing.py                             3      0      0      0  100.00%
+config\urls.py                                4      0      0      0  100.00%
+loja\__init__.py                              0      0      0      0  100.00%
+loja\apps.py                                  3      0      0      0  100.00%
+loja\forms.py                                18      0      0      0  100.00%
+loja\management\__init__.py                   0      0      0      0  100.00%
+loja\management\commands\__init__.py          0      0      0      0  100.00%
+loja\management\commands\setup_owner.py      27      0      2      0  100.00%
+loja\middleware.py                           22      0      6      0  100.00%
+loja\models.py                               44      0      4      0  100.00%
+loja\services.py                             80      0     32      0  100.00%
+loja\urls.py                                  3      0      0      0  100.00%
+loja\views.py                                80      0     12      0  100.00%
+---------------------------------------------------------------------------------------
+TOTAL                                       351      0     66      0  100.00%

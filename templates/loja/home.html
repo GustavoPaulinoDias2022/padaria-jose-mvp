@@ -1,0 +1,4 @@
+{% extends 'base.html' %}{% block content %}<h1>Menu inicial</h1><p>O que você deseja fazer?</p>
+<section class="hero"><h2>Nova venda</h2><p>Selecione os produtos, confira os valores e confirme a operação.</p><a class="button" href="{% url 'sale_new' %}">Iniciar venda</a></section>
+<div class="grid"><section class="card"><h2>Produtos e estoque</h2><p>Cadastre produtos e consulte as quantidades disponíveis.</p><a class="button secondary" href="{% url 'products' %}">Consultar estoque</a><a href="{% url 'product_create' %}">Cadastrar produto</a></section>
+<section class="card"><h2>Histórico</h2><p>Confira as vendas e seus valores históricos.</p><a class="button secondary" href="{% url 'history' %}">Ver histórico</a></section></div>{% endblock %}

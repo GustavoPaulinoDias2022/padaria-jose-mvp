@@ -1,0 +1,3 @@
+{% extends 'base.html' %}{% block content %}<section class="card narrow"><h1>Entrar</h1><p>Acesso exclusivo à pessoa autorizada a operar a padaria.</p>
+{% if request.GET.expired %}<p role="alert" class="notice">Sua sessão expirou. Entre novamente; nenhuma venda foi confirmada por esta tela.</p>{% endif %}
+<form method="post">{% csrf_token %}{{ form.as_p }}<input type="hidden" name="next" value="{{ next }}"><button>Entrar</button></form></section>{% endblock %}

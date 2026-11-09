@@ -1,0 +1,37 @@
+# Demonstração acadêmica: banco gratuito expira após 30 dias; não usar dados reais.
+# A criação destes recursos exige conta Render conectada; este arquivo não provisiona sozinho.
+services:
+  - type: web
+    name: padaria-jose-mvp
+    runtime: python
+    plan: free
+    region: oregon
+    repo: https://github.com/GustavoPaulinoDias2022/padaria-jose-mvp
+    branch: feat/mvp-django-testes
+    autoDeployTrigger: "off"
+    buildCommand: bash build.sh
+    startCommand: bash start.sh
+    healthCheckPath: /healthz/
+    envVars:
+      - key: APP_ENV
+        value: production
+      - key: DJANGO_SECRET_KEY
+        sync: false
+      - key: INITIAL_OWNER_USERNAME
+        sync: false
+      - key: INITIAL_OWNER_PASSWORD
+        sync: false
+      - key: SEED_DEMO_DATA
+        value: "1"
+      - key: TRUST_HTTPS_PROXY
+        value: "1"
+      - key: DATABASE_URL
+        fromDatabase:
+          name: padaria-jose-db
+          property: connectionString
+databases:
+  - name: padaria-jose-db
+    plan: free
+    region: oregon
+    databaseName: padaria_demo
+    user: padaria_app
