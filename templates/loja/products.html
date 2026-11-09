@@ -1,0 +1,5 @@
+{% extends 'base.html' %}{% block content %}<h1>Produtos e estoque</h1><a class="button" href="{% url 'product_create' %}">Cadastrar produto</a>
+<form method="get" class="card"><label for="busca">Buscar pelo nome</label><input id="busca" name="q" value="{{ query }}" maxlength="120"><button>Buscar</button></form>
+<div class="table-wrap" role="region" aria-label="Estoque de produtos" tabindex="0"><table><caption>Produtos cadastrados — valores em reais</caption><thead><tr><th scope="col">Produto</th><th scope="col">Preço</th><th scope="col">Estoque</th><th scope="col">Situação</th><th scope="col">Ação</th></tr></thead><tbody>
+{% for product in page %}<tr><td>{{ product.name }}</td><td>R$ {{ product.price }} / {{ product.unit }}</td><td>{{ product.stock }} {{ product.unit }}</td><td>{% if product.active %}Ativo{% else %}Inativo{% endif %}</td><td><a href="{% url 'product_edit' product.pk %}">Editar {{ product.name }}</a></td></tr>{% empty %}<tr><td colspan="5">Nenhum produto encontrado.</td></tr>{% endfor %}</tbody></table></div>
+{% include 'loja/pagination.html' %}{% endblock %}

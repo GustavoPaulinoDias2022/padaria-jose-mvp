@@ -1,0 +1,4 @@
+{% extends 'base.html' %}{% block content %}<section class="card narrow"><h1>{% if editing %}Editar produto{% else %}Cadastrar produto{% endif %}</h1>
+<p>Nome, preço, estoque e unidade são obrigatórios. UN aceita apenas inteiros; KG aceita até três casas decimais.</p>
+{% if editing %}<p class="notice">Alterar estoque é um ajuste manual, não uma venda. Confira o saldo físico antes de salvar. A unidade de produtos já vendidos não pode ser alterada.</p>{% endif %}
+<form method="post">{% csrf_token %}{{ form.as_p }}<button>Salvar produto</button><a class="button secondary" href="{% url 'products' %}">Cancelar</a></form></section>{% endblock %}

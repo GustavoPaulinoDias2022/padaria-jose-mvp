@@ -2,7 +2,7 @@
 
 Planejamento acadêmico e protótipos visuais de uma aplicação para integrar o registro de vendas ao controle de estoque de um pequeno comércio.
 
-**Situação atual: planejamento documentado e três imagens de protótipo. Não há aplicação Django implementada, implantação, testes executados ou validação com a participante comprovados neste repositório.**
+**Situação atual: MVP Django implementado e testes locais executados.** Há autenticação, produtos, prévia de venda, confirmação com baixa de estoque e histórico. A aplicação não foi publicada em produção nem validada com a participante. Consulte o [relatório de execução](docs/13-implementacao-e-testes.md) para a cobertura medida e os limites das verificações.
 
 O nome desta pasta é uma identificação técnica para o repositório. O título formal adotado na Experiência Prática 1 ainda precisa ser confirmado antes da entrega acadêmica.
 
@@ -35,6 +35,8 @@ Aplicação web responsiva com cadastro de produtos, consulta de estoque, regist
 | [Checklist de segurança](validacao/checklist-seguranca.md) | Verificações de acesso, entradas, sessão, segredos e implantação, ainda não executadas |
 | [Fichas de desempenho e impacto](validacao/ficha-desempenho-e-impacto.md) | Registro reproduzível do RNF03 e dos KPIs, sem resultados inventados |
 | [Checklist de acessibilidade](validacao/checklist-acessibilidade.md) | Verificação do RNF04 nas três telas e distinção entre imagem e interação real |
+| [Implementação e testes](docs/13-implementacao-e-testes.md) | Evidências medidas, controles verificados e limitações |
+| [Executar o MVP](docs/14-execucao.md) | Instalação, conta inicial sem senha padrão e comandos de testes |
 
 ## Protótipos
 
@@ -54,14 +56,16 @@ As imagens foram criadas com geração de imagens assistida por IA. São propost
 
 ## Tecnologias planejadas
 
-Python 3.13.x, Django 5.2 LTS, templates HTML, Bootstrap 5.3.x, PostgreSQL gerenciado, Psycopg 3 e Gunicorn na hospedagem Linux. Versões completas e infraestrutura serão confirmadas na implementação. Não existe instalação executável nesta entrega documental.
+Python 3.13, Django 5.2 LTS, templates HTML com CSS local, Psycopg 3, django-axes e WhiteNoise. PostgreSQL é o banco previsto para produção; SQLite permite executar e testar localmente sem servidor de banco. Gunicorn está nas dependências Linux. Os arquivos requirements.txt e requirements-dev.txt fixam as versões. O CSS local substitui o Bootstrap inicialmente proposto, reduzindo dependências e evitando conteúdo externo; preserva o visual e os critérios previstos, ainda sujeitos à validação visual e assistiva.
 
 ## Próximos passos
 
 1. Confirmar o título acadêmico, dispositivo, conexão e requisitos com a parceira.
 2. Obter consentimento e realizar a validação, preservando registros privados.
-3. Ajustar as interfaces e implementar o núcleo em incrementos testáveis.
-4. Verificar segurança, acessibilidade, desempenho e restauração dos backups antes de implantar.
+3. Revisar o MVP implementado e as divergências entre protótipo estático e interface real.
+4. Concluir verificações em PostgreSQL, acessibilidade, rede/dispositivo reais e restauração de backups antes de implantar.
+
+Os documentos 01–12 registram o planejamento anterior à implementação. Onde indicam ausência de código ou testes, representam esse estágio histórico; o relatório 13 registra o que foi efetivamente implementado e medido depois.
 
 ## Privacidade e uso
 

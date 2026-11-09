@@ -14,6 +14,10 @@ __pycache__/
 venv/
 .pytest_cache/
 .coverage
+.coverage.*
+coverage.json
+!relatorios/coverage.json
+coverage.xml
 htmlcov/
 .idea/
 .vscode/

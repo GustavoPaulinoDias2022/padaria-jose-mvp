@@ -1,0 +1,10 @@
+{% load static %}<!doctype html>
+<html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{% block title %}Padaria José{% endblock %} — Vendas e estoque</title>
+<link rel="stylesheet" href="{% static 'loja.css' %}"></head><body>
+<a class="skip" href="#conteudo">Pular para o conteúdo</a>
+<header><a class="brand" href="{% url 'home' %}">Padaria José<span>Controle de vendas e estoque</span></a>
+{% if user.is_authenticated %}<div class="account">{{ user.username }}<form method="post" action="{% url 'logout' %}">{% csrf_token %}<button class="secondary">Sair</button></form></div>{% endif %}</header>
+{% if user.is_authenticated %}<nav aria-label="Menu principal"><a href="{% url 'home' %}">Menu inicial</a><a href="{% url 'sale_new' %}">Nova venda</a><a href="{% url 'products' %}">Produtos e estoque</a><a href="{% url 'history' %}">Histórico</a></nav>{% endif %}
+<main id="conteudo" tabindex="-1">{% block content %}{% endblock %}</main>
+<footer>MVP acadêmico • Não substitui emissão fiscal</footer></body></html>

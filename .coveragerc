@@ -1,0 +1,15 @@
+[run]
+branch = True
+source = loja,config
+omit =
+    */migrations/*
+    */tests/*
+    config/wsgi.py
+    config/asgi.py
+
+[report]
+show_missing = True
+precision = 2
+
+[html]
+directory = htmlcov

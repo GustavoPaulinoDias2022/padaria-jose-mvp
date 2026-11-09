@@ -1,0 +1,39 @@
+name: Testes e cobertura
+on:
+  push:
+    branches: [main, feat/mvp-django-testes]
+  pull_request:
+permissions:
+  contents: read
+jobs:
+  django:
+    runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgres:17
+        env:
+          POSTGRES_DB: padaria_ci
+          POSTGRES_USER: padaria_ci
+          POSTGRES_PASSWORD: ci_only_not_a_production_secret
+        ports: ['5432:5432']
+        options: >-
+          --health-cmd "pg_isready -U padaria_ci"
+          --health-interval 10s --health-timeout 5s --health-retries 5
+    env:
+      # Banco descartável exclusivo de CI. Não são credenciais de produção.
+      DATABASE_URL: postgresql://padaria_ci:ci_only_not_a_production_secret@localhost:5432/padaria_ci?sslmode=disable
+      DJANGO_SETTINGS_MODULE: config.testing
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+          cache: pip
+      - run: python -m pip install -r requirements-dev.txt
+      - run: python manage.py check
+      - run: python manage.py makemigrations --check --dry-run
+      - run: python -m coverage run manage.py test --verbosity=2
+      - run: python -m coverage report --fail-under=90
+      - run: python -m pip_audit -r requirements.txt

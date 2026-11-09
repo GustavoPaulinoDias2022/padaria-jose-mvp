@@ -1,0 +1,6 @@
+{% extends 'base.html' %}{% block content %}<h1>Resultado da venda</h1><section role="status" class="success"><h2>✓ Venda registrada</h2><p>O registro e a baixa no estoque foram concluídos. Esta operação não deve ser registrada novamente.</p></section>
+<section class="card"><h2>Detalhes da venda {{ sale.pk }}</h2><p>Data: {{ sale.created_at|date:'d/m/Y H:i' }} • Responsável: {{ sale.user.username }}</p>
+<div class="table-wrap" role="region" aria-label="Itens da venda" tabindex="0"><table><caption>Valores praticados no momento da venda</caption><thead><tr><th>Produto</th><th>Quantidade</th><th>Preço unitário</th><th>Subtotal</th><th>Estoque atual</th></tr></thead><tbody>
+{% for item in sale.items.all %}<tr><td>{{ item.product_name }}</td><td>{{ item.quantity }} {{ item.unit }}</td><td>R$ {{ item.unit_price }}</td><td>R$ {{ item.subtotal }}</td><td>{{ item.product.stock }} {{ item.product.unit }}</td></tr>{% endfor %}</tbody></table></div>
+<p class="total">Total: R$ {{ sale.total }}</p><p>O estoque atual pode incluir movimentos posteriores a esta venda.</p></section>
+<h2>Como deseja continuar?</h2><a class="button" href="{% url 'sale_new' %}">Nova venda</a><a class="button secondary" href="{% url 'history' %}">Ver histórico</a><a class="button secondary" href="{% url 'home' %}">Voltar ao menu</a>{% endblock %}
