@@ -31,6 +31,7 @@ Aplicação web responsiva com cadastro de produtos, consulta de estoque, regist
 | [Plano de trabalho](docs/09-plano-e-aprendizagem.md) | Cronograma, KPIs, aprendizagem e pendências |
 | [Publicação e fontes](docs/10-publicacao-e-fontes.md) | Como publicar e limites das evidências |
 | [Cenários de aceitação](docs/11-cenarios-de-aceitacao.md) | Casos verificáveis de cadastro, vendas, estoque e histórico, ainda não executados |
+| [Matriz de rastreabilidade](docs/12-matriz-de-rastreabilidade.md) | Relação entre problema, requisitos, entidades, telas e verificações |
 
 ## Protótipos
 
