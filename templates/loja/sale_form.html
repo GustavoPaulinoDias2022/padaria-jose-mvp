@@ -4,7 +4,8 @@
 <form method="post" class="card">{% csrf_token %}<input type="hidden" name="operation_key" value="{{ operation_key }}"><input type="hidden" name="forms_count" value="{{ forms_count }}">{{ formset.management_form }}{{ formset.non_form_errors }}
 {% for form in formset %}<fieldset><legend>Item {{ forloop.counter }}</legend>{{ form.as_p }}</fieldset>{% endfor %}
 <p>Confira a quantidade e unidade. Cada produto deve aparecer apenas uma vez. A confirmação registra a venda e reduz o estoque.</p>
-<button name="action" value="preview" class="secondary">Conferir total</button>
-{% if preview %}<section class="notice" aria-label="Prévia da venda"><h2>Confira antes de confirmar</h2>{% for item in preview.items %}<p>{{ item.product.name }} — {{ item.quantity }} {{ item.product.unit }} — R$ {{ item.subtotal }}</p>{% endfor %}<p class="total">Total: R$ {{ preview.total }}</p><p>A confirmação usa os preços e saldos vigentes no servidor.</p></section><button name="action" value="confirm">Confirmar venda</button>{% endif %}
+<p id="preview-help">Conferir total apenas calcula uma prévia: não registra a venda nem altera o estoque.</p>
+<button name="action" value="preview" class="secondary" aria-describedby="preview-help">Conferir total</button>
+{% if preview %}<section class="notice" aria-label="Prévia da venda" role="status"><h2>Prévia — venda ainda não registrada</h2>{% for item in preview.items %}<p>{{ item.product.name }} — {{ item.quantity }} {{ item.product.unit }} — R$ {{ item.subtotal }}</p>{% endfor %}<p class="total">Total: R$ {{ preview.total }}</p><p id="confirm-help">Somente Confirmar venda registra a operação e reduz o estoque. A confirmação usa os preços e saldos vigentes no servidor.</p></section><button name="action" value="confirm" aria-describedby="confirm-help">Confirmar venda</button>{% endif %}
 <a class="button secondary" href="{% url 'home' %}">Cancelar e voltar ao menu</a></form>
 <p class="notice">Se a resposta demorar ou a conexão falhar, mantenha esta página e reenvie a mesma operação. Sua identificação única evita registro duplicado.</p>{% endblock %}

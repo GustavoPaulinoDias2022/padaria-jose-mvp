@@ -28,7 +28,7 @@ class ProductChoiceField(forms.ModelChoiceField):
 class SaleRowForm(forms.Form):
     product = ProductChoiceField(label='Produto', queryset=Product.objects.filter(active=True))
     quantity = forms.DecimalField(label='Quantidade', max_digits=12, decimal_places=3, min_value=0.001,
-                                 localize=True, help_text='Use vírgula ou ponto; UN aceita somente inteiros.')
+                                 localize=True, help_text='Para KG: 0,500 kg = meio quilo. Para UN: informe somente inteiros, como 2. Use vírgula ou ponto para decimais.')
 
 
 SaleFormSet = formset_factory(SaleRowForm, extra=0, max_num=20, validate_max=True,
