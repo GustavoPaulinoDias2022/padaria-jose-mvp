@@ -34,6 +34,7 @@ Aplicação web responsiva com cadastro de produtos, consulta de estoque, regist
 | [Matriz de rastreabilidade](docs/12-matriz-de-rastreabilidade.md) | Relação entre problema, requisitos, entidades, telas e verificações |
 | [Checklist de segurança](validacao/checklist-seguranca.md) | Verificações de acesso, entradas, sessão, segredos e implantação, ainda não executadas |
 | [Fichas de desempenho e impacto](validacao/ficha-desempenho-e-impacto.md) | Registro reproduzível do RNF03 e dos KPIs, sem resultados inventados |
+| [Checklist de acessibilidade](validacao/checklist-acessibilidade.md) | Verificação do RNF04 nas três telas e distinção entre imagem e interação real |
 
 ## Protótipos
 
