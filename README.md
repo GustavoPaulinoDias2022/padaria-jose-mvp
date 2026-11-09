@@ -32,6 +32,7 @@ Aplicação web responsiva com cadastro de produtos, consulta de estoque, regist
 | [Publicação e fontes](docs/10-publicacao-e-fontes.md) | Como publicar e limites das evidências |
 | [Cenários de aceitação](docs/11-cenarios-de-aceitacao.md) | Casos verificáveis de cadastro, vendas, estoque e histórico, ainda não executados |
 | [Matriz de rastreabilidade](docs/12-matriz-de-rastreabilidade.md) | Relação entre problema, requisitos, entidades, telas e verificações |
+| [Checklist de segurança](validacao/checklist-seguranca.md) | Verificações de acesso, entradas, sessão, segredos e implantação, ainda não executadas |
 
 ## Protótipos
 
