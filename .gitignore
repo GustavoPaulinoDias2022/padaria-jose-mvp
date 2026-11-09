@@ -1,0 +1,34 @@
+# Segredos e configurações locais
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+credentials*
+secrets*
+
+# Python e ferramentas
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.pytest_cache/
+.coverage
+htmlcov/
+.idea/
+.vscode/
+
+# Dados, backups e registros privados
+*.sqlite3
+*.dump
+*.backup
+*.sql
+*.log
+privado/
+consentimentos/
+evidencias-privadas/
+backups/
+media/
+staticfiles/
+.DS_Store
+Thumbs.db

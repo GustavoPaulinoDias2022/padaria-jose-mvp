@@ -1,0 +1,2 @@
+Protótipo visual gerado com a ferramenta integrada de geração de imagens.
+Prompt: Criar captura visual do menu inicial da Padaria José, com controle de vendas e estoque, conta fictícia Operadora Teste, identificação Demonstração, menu com Nova venda, Produtos, Estoque, Histórico e Sair, botão destacado Iniciar venda, interface clara em português com fundo claro e destaque terracota. Sem dados pessoais reais. Imagem conceitual de protótipo, não sistema implementado.
